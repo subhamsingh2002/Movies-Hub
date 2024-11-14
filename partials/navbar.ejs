@@ -1,0 +1,71 @@
+<head>
+
+    <link rel="stylesheet" href="./../css/navbar.css">
+</head>
+
+<nav>
+    <div class="nav-bar">
+        <i class='bx bx-menu sidebarOpen'></i>
+        <span class="logo navLogo"><a href="/">Movies Hub</a></span>
+
+        <div class="menu">
+            <div class="logo-toggle">
+                <span class="logo"><a href="/">Movies Hub</a></span>
+                <i class='bx bx-x siderbarClose'></i>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="/">Trending</a></li>
+                <li><a href="/popular">Popular</a></li>
+
+                <!-- <li><a href="#">Favourites</a></li> -->
+
+                <li><a href="/toprated">Top Rated</a></li>
+                <li><a href="/nowplaying">Now Playing</a></li>
+                <li><a href="/upcoming">Upcoming</a></li>
+            </ul>
+        </div>
+
+        <div class="darkLight-searchBox">
+            <div class="dark-light">
+                <i class='bx bx-moon moon'></i>
+                <i class='bx bx-sun sun'></i>
+            </div>
+
+            <div class="searchBox">
+                <div class="searchToggle">
+                    <i class='bx bx-x cancel'></i>
+                    <i class='bx bx-search search'></i>
+                </div>
+
+                <div class="search-field">
+
+                    <input type="text" id="input" placeholder="Search...">
+
+                    <i class='bx bx-search'></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ***************** NAVBAR ENDS HERE ******************* -->
+
+<script src="./../js/effect.js"></script>
+
+<script>
+
+    let input = document.getElementById('input')
+
+    input.addEventListener('keyup', (e) => {
+
+        if(e.key === 'Enter')
+        {
+            let value = input.value
+            // console.log(value)
+
+            if(value !== '')
+                location.href = `/search/${value}`
+        }
+    })
+</script>

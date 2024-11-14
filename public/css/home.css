@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.4s ease;
+}
+
+
+/* ===== Colours ===== */
+:root {
+    --body-color: #6682d7;
+    --nav-color: #1e3c8d;
+    --side-nav: #0c0d3c;
+    --text-color: #FFF;
+    --search-bar: #F2F2F2;
+    --search-text: #0b1738;
+    --box-shadow: 1rem 1rem 0 rgb(255, 255, 255);
+    --card-shadow: 0.4rem 0.4rem 0 rgba(254, 254, 254, 0.497);
+}
+
+body {
+    background-color: var(--body-color);
+}
+
+body.dark {
+    --body-color: #3d3d8e;
+    --nav-color: #070736;
+    --side-nav: #070736;
+    --text-color: rgb(247, 247, 247);
+    --search-bar: #191964;
+}
+
+/* ----**** CARD SECTION CSS ****---- */
+
+.heading{
+    text-align: center;
+    font-size: 2.1rem;
+    margin: 6rem 0 1rem 0;
+    color: #fff;
+}
+
+.container {
+    padding: 1rem 2rem;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 1;
+    width: fit-content;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    background-color: #ffffff;
+    margin-bottom: 2rem;
+}
+
+.box:hover{
+    scale: 1.05;
+    cursor: pointer;
+}
+
+.box .image-box img {
+    height: 310px;
+    width: 290px;
+}
+
+.box .fav-name-rating {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.3rem;
+}
+
+.box .fav-name-rating .rating {
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+    background-color: rgba(255, 234, 77, 0.885);
+    font-weight: 650;
+    color: rgb(170, 49, 6);
+}
+
+.box .fav-name-rating .fav i {
+    font-size: 1.2rem;
+    color: rgb(255, 0, 0);
+}
+
+.fa-heart:before {
+    font-size: 1.4rem;
+    color: rgb(117, 112, 112);
+}
+
+.removebg{
+    color: #FFF;
+}
+
+.box .fav-name-rating .name {
+    font-weight: bold;
+}
+
+/* ---------- Media Query --------- */
+
+@media (max-width: 712px){
+    .box .image-box img {
+        height: 280px;
+        width: 270px;
+    }
+    
+}
+
+@media (max-width: 680px){
+    .box .image-box img {
+        height: 275px;
+        width: 250px;
+    }
+}
+
+@media (max-width: 629px){
+    .box .image-box img {
+        height: 230px;
+        width: 200px;
+    }
+}
+
+
+@media (max-width: 532px){
+    .container {
+        display:flex;
+        flex-direction: column;
+    }
+
+    .box .image-box img {
+        height: 50%;
+        width: 100%;
+    }
+
+    .heading{
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,158 @@
+<%- include('../partials/header.ejs') %>
+
+    <head>
+        <title>
+            <%= title %>
+        </title>
+
+        <link rel="icon" type="image/x-icon" href="./../images/video-camera.png">
+
+
+        <link rel="stylesheet" href="./../css/header.css">
+        <link rel="stylesheet" href="./../css/movie.css">
+        <link rel="stylesheet" href="./../css/footer.css">
+
+        <link rel="stylesheet" href="./../css/navbar.css">
+
+
+    </head>
+
+    <body>
+        <!-- ***************** NAVBAR STARTS HERE ******************* -->
+
+        <%- include('../partials/navbar.ejs') %>
+
+            <!-- ***************** NAVBAR ENDS HERE ******************* -->
+
+            <img src="https://image.tmdb.org/t/p/original/<%= movie.backdrop_path %>" alt="" class="backdropImg">
+
+            <section class="container">
+
+                <div class="inner">
+
+                    <div class="image-box">
+                        <img src="https://image.tmdb.org/t/p/original/<%= movie.poster_path %>" alt="">
+                    </div>
+
+                    <div class="description">
+
+                        <div class="movie-name">
+                            <%= movie.title %>
+                        </div>
+
+                        <div class="releaseDate-genre">
+
+                            <div class="releaseDate">
+                                <%= moment(movie.release_date).format('DD MMMM YYYY') %>
+                            </div>
+
+                            <div class="genre">
+
+                                <% if(movie && movie.genres) { %>
+
+                                    <% for(let i=0; i < movie.genres.length; i++) { %>
+
+                                        <% if(i==movie.genres.length-1) { %>
+
+                                            <%= movie.genres[i].name %>
+
+                                        <% } else { %>
+
+                                            <%= movie.genres[i].name + ',' %>
+
+                                        <% } %>
+
+                                    <% } %>
+
+                                <% } %>
+
+                            </div>
+                        </div>
+
+                        <div class="rating-fav-trailer">
+
+                            <div class="rating">
+                                <h3><%= parseFloat(movie.vote_average).toFixed(1) %></h3>
+                            </div>
+
+
+                            <a class="btn" target="_blank" href="https://www.youtube.com/watch?v=<%= key %>"> Play Trailer <span
+                                class="fas fa-play"></span></a>
+
+                        </div>
+
+                        <div class="overview">
+
+                            <div class="overview-heading">
+                                Overview :
+                            </div>
+
+                            <p class="overview-content">
+                                <%= movie.overview %>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <<!-- ***************** Footer STARTS HERE ******************* -->
+
+                <%- include('../partials/footer.ejs') %>
+
+                    <!-- ***************** Footer ENDS HERE ******************* -->
+
+                    <script src="./../js/effect.js"></script>
+
+                    <script>
+                        const body = document.querySelector("body"),
+                            nav = document.querySelector("nav"),
+                            modeToggle = document.querySelector(".dark-light"),
+                            searchToggle = document.querySelector(".searchToggle"),
+                            sidebarOpen = document.querySelector(".sidebarOpen"),
+                            siderbarClose = document.querySelector(".siderbarClose");
+
+                        let getMode = localStorage.getItem("mode");
+                        if (getMode && getMode === "dark-mode") {
+                            body.classList.add("dark");
+                        }
+
+                        // js code to toggle dark and light mode
+                        modeToggle.addEventListener("click", () => {
+                            modeToggle.classList.toggle("active");
+                            body.classList.toggle("dark");
+
+                            // js code to keep user selected mode even page refresh or file reopen
+                            if (!body.classList.contains("dark")) {
+                                localStorage.setItem("mode", "light-mode");
+                            } else {
+                                localStorage.setItem("mode", "dark-mode");
+                            }
+                        });
+
+                        // js code to toggle search box
+                        searchToggle.addEventListener("click", () => {
+                            searchToggle.classList.toggle("active");
+                        });
+
+
+                        //   js code to toggle sidebar
+                        sidebarOpen.addEventListener("click", () => {
+                            nav.classList.add("active");
+                        });
+
+                        body.addEventListener("click", e => {
+                            let clickedElm = e.target;
+
+                            if (!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")) {
+                                nav.classList.remove("active");
+                            }
+                        });
+
+                    </script>
+
+    </body>
+
+    </html>
